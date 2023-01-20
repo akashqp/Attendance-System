@@ -130,7 +130,6 @@ def addPost():
             break
     cap.release()
     cv2.destroyAllWindows()
-    print('Training Model')
     train_model()
     names, rolls, times, l = extract_attendance()
     return redirect('/')
@@ -147,7 +146,6 @@ def start():
     if 'face_recognition_model.pkl' not in os.listdir('static'):
         return render_template('Take_Attendance.html', totalreg=totalreg(), datetoday2=datetoday2,
                                mess='There is no trained model in the static folder. Please add a new face to continue.')
-
     cap = cv2.VideoCapture(0)
     ret = True
     while ret:
